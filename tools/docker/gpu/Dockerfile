@@ -1,14 +1,14 @@
-FROM cuda:8.0-cudnn5-devel
+FROM nvidia/cuda:7.5-cudnn4-devel
 MAINTAINER H2O.AI <deepwater@h2o.ai>
 
-ENV CUDNN_VERSION 5
-LABEL com.nvidia.cudnn.version="5"
+ENV CUDNN_VERSION 4
+LABEL com.nvidia.cudnn.version="4"
 
 RUN echo "$CUDNN_VERSION"
 
 
 ARG THEANO_VERSION=rel-0.8.2
-ARG TENSORFLOW_VERSION=0.8.0
+ARG TENSORFLOW_VERSION=0.10.0
 ARG TENSORFLOW_ARCH=gpu
 ARG KERAS_VERSION=1.0.3
 ARG LASAGNE_VERSION=v0.1
@@ -31,7 +31,6 @@ RUN apt-get update && apt-get install -y \
 		liblcms2-dev \
 		libopenblas-dev \
 		liblapack-dev \
-#		libopenjpeg2 \
 		libpng12-dev \
 		libssl-dev \
 		libtiff5-dev \
@@ -92,12 +91,6 @@ RUN conda install -y --quiet \
 		&& \
 	python -m ipykernel.kernelspec
 
-#Install TensorFlow
-#TODO use ${TENSORFLOW_VERSION}
-COPY tensorflow-0.10.0rc0-py2-none-any.whl /tmp/
-RUN pip --no-cache-dir install \
-	/tmp/tensorflow-0.10.0rc0-py2-none-any.whl
-
 # Install Oracle Java 7
 RUN \
   DEBIAN_FRONTEND=noninteractive \
@@ -107,6 +100,12 @@ RUN \
   echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y oracle-java7-installer && \
   apt-get clean 
+
+#Install TensorFlow
+#TODO use ${TENSORFLOW_VERSION}
+ENV TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0rc0-cp27-none-linux_x86_64.whl
+
+RUN pip install --ignore-installed --upgrade $TF_BINARY_URL
 
 # Fetch h2o latest_stable
 RUN \

@@ -1,0 +1,40 @@
+{
+  "description": "Docker-capable AMI for Amazon EC2",
+
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_region": "",
+    "version": "1.7.1",
+    "revision": "0",
+    "source_ami": "",
+    "instance_type": "g2.2xlarge"
+  },
+
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "{{user `aws_region`}}",
+    "source_ami": "{{user `source_ami`}}",
+    "instance_type": "{{user `instance_type`}}",
+    "ssh_username": "ubuntu",
+    "ami_name": "ubuntu-14.04-nvidia-docker-8.0-{{user `version`}}.{{user `revision`}}",
+    "ami_groups": ["all"],
+    "ami_regions": [
+      "us-east-1"
+    ]
+  }],
+
+  "provisioners": [{
+    "type": "shell",
+    "environment_vars": [
+      "version={{user `version`}}"
+    ],
+    "scripts": [
+        "install_docker.sh",
+        "install_nvidia_drivers.sh",
+        "install_nvidia_docker.sh"
+    ]
+  }]
+}

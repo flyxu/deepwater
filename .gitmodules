@@ -1,0 +1,3 @@
+[submodule "third-party/datalab"]
+	path = third-party/datalab
+	url = https://github.com/googledatalab/datalab.git

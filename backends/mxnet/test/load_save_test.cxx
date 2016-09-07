@@ -8,7 +8,8 @@ using namespace std;
 int main() {
     int classes = 10;
     int batch_size = 4;
-    vector<string> networks={"lenet","alexnet","googlenet","inception_bn","resnet","vgg"};
+    //vector<string> networks={"lenet","alexnet","googlenet","inception_bn","resnet","vgg"};
+    vector<string> networks={"inception_bn"};
 
     for(string& network : networks) {
         string md5_first;

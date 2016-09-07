@@ -1,9 +1,6 @@
 #!/bin/sh
 
 docker run \
-  --rm \
-  --tty \
-  --interactive \
   --volume $PWD:/workspace \
   --workdir /workspace \
   d11wtq/packer:0.8.5 \

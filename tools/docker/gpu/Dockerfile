@@ -103,9 +103,9 @@ RUN \
 
 #Install TensorFlow
 #TODO use ${TENSORFLOW_VERSION}
-ENV TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0rc0-cp27-none-linux_x86_64.whl
-
-RUN pip install --ignore-installed --upgrade $TF_BINARY_URL
+#ENV TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
+ADD tensorflow-0.10.0-py2-none-any.whl .
+RUN pip install --ignore-installed --upgrade  tensorflow-0.10.0-py2-none-any.whl
 
 # Fetch h2o latest_stable
 RUN \

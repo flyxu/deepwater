@@ -23,7 +23,11 @@
     "ami_groups": ["all"],
     "ami_regions": [
       "us-east-1"
-    ]
+    ],
+  "tags": {
+    "name": "nvidia-docker-ami",
+    "project": "deepwater" 
+    }
   }],
 
   "provisioners": [{

@@ -41,7 +41,11 @@
       "version={{user `version`}}"
     ],
     "scripts": [
-        "install_tensorflow_build_env.sh"
+        "install_java.sh",
+        "install_bazel.sh",
+        "install_anaconda.sh",
+        "install_mxnet_dev_env.sh",
+        "install_tensorflow_dev_env.sh"
     ]
   }],
 

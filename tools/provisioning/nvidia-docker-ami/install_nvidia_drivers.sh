@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -e 
+
+export DEBIAN_FRONTEND=noninteractive
+
 # This script installs Nvidia Driver on ec2
 # https://github.com/NVIDIA/nvidia-docker/wiki/Deploy-on-Amazon-EC2
 

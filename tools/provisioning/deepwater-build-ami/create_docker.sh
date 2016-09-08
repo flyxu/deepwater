@@ -1,3 +1,3 @@
 #!/bin/sh
 
-packer -only=docker $1 
+aws ecr get-login && packer build -only=docker ${1:-packer.json} 

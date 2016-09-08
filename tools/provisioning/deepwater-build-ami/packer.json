@@ -41,7 +41,8 @@
       "version={{user `version`}}"
     ],
     "scripts": [
-        "install_java.sh",
+        "install_build_essential.sh",
+        "install_java_oracle_8.sh",
         "install_bazel.sh",
         "install_anaconda.sh",
         "install_mxnet_dev_env.sh",

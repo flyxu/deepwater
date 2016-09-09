@@ -12,6 +12,9 @@ RUN ./install_build_essential.sh
 ADD ./install_java_oracle_8.sh /workspace/
 RUN ./install_java_oracle_8.sh
 
+ADD ./install_maven.sh /workspace/
+RUN ./install_maven.sh
+
 ADD ./install_bazel.sh /workspace/
 RUN ./install_bazel.sh
 

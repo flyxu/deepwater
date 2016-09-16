@@ -4,7 +4,7 @@ ifeq ($(UNAME_S), Darwin)
 	JAVA_INCLUDE := -I/System/Library/Frameworks/JavaVM.framework/Headers
 else
 	#JAVA_INCLUDE := -I/usr/lib/jvm/java-1.8.0-openjdk-amd64/include/linux -I/usr/lib/jvm/java-1.8.0-openjdk-amd64/include
-	JAVA_INCLUDE := -I/usr/lib/jvm/java-8-oracle/include/linux/ -I/usr/lib/jvm/java-8-oracle/include/
+	JAVA_INCLUDE := -I/usr/lib/jvm/java-8-oracle/include/linux/ -I/usr/lib/jvm/java-8-oracle/include/ -I/usr/lib/jvm/java-8-openjdk-amd64/include
 endif
 
 MXNET_ROOT:=./mxnet
